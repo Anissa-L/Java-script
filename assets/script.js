@@ -26,6 +26,8 @@ const dots = document.querySelector(".dots");
 
 const lastSlide = slides.length - 1;
 
+let index = 0;
+
 // Create as many dots as slides in  the banner
 for (let i = 0; i < slides.length; i++) {
   const dotDiv = document.createElement("div");
@@ -62,5 +64,22 @@ arrowLeft.addEventListener("click", () => {
 // Arrrow right
 
 arrowRight.addEventListener("click", () => {
+  console.log(index);
+  allDots[index].classList.remove("dot_selected");
+
+  if (index === lastSlide) {
+    index = 0; //if we are on the last slide make the next left click goes to the  slide
+  } else {
+    index++;
+  }
+
+  bannerImage.src = "./assets/images/slideshow/" + slides[index].image;
+  tagLine.innerHTML = slides[index].tagLine;
+  allDots[index].classList.add("dot_selected");
+
+  console.log(index);
+
+  allDots[index].classList.add("dot_selected");
+
   console.log("arrow right !");
 });
