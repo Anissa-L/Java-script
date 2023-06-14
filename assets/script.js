@@ -18,6 +18,8 @@ const slides = [
   },
 ];
 
+// constante
+
 const arrowLeft = document.querySelector(".arrow_left");
 const arrowRight = document.querySelector(".arrow_right");
 const bannerImage = document.querySelector(".banner-img");
@@ -25,15 +27,20 @@ const tagLine = document.querySelector("#banner p");
 const dots = document.querySelector(".dots");
 
 const lastSlide = slides.length - 1;
+console.log(lastSlide);
+
+// position indice 0
 
 let index = 0;
 
-// Create as many dots as slides in  the banner
+// création d'autant de bullets points que de diapositive
+
 for (let i = 0; i < slides.length; i++) {
   const dotDiv = document.createElement("div");
   dotDiv.className = "dot";
   dots.appendChild(dotDiv);
 }
+// ajout de la bullet qui signale la position
 
 const allDots = document.querySelectorAll(".dot");
 allDots[0].classList.add("dot_selected");
@@ -45,18 +52,17 @@ arrowLeft.addEventListener("click", () => {
   allDots[index].classList.remove("dot_selected");
 
   if (index === 0) {
-    index = lastSlide; //if we are on the first slide make the next left click goes to the last slide
+    index = lastSlide; // si nous sommes sur la première diapositive le prochain clic de gauche mènera à la dernière diapositive
   } else {
     index--;
   }
 
+  // changement d'image et de texte
   bannerImage.src = "./assets/images/slideshow/" + slides[index].image;
   tagLine.innerHTML = slides[index].tagLine;
   allDots[index].classList.add("dot_selected");
 
   console.log(index);
-
-  allDots[index].classList.add("dot_selected");
 
   console.log("arrow Left !");
 });
@@ -68,18 +74,18 @@ arrowRight.addEventListener("click", () => {
   allDots[index].classList.remove("dot_selected");
 
   if (index === lastSlide) {
-    index = 0; //if we are on the last slide make the next left click goes to the  slide
+    index = 0; // si nous sommes sur la dernière diapositive le prochain clic de droite mènera à la première diapositive
   } else {
     index++;
   }
+
+  // changement d'image et de texte
 
   bannerImage.src = "./assets/images/slideshow/" + slides[index].image;
   tagLine.innerHTML = slides[index].tagLine;
   allDots[index].classList.add("dot_selected");
 
   console.log(index);
-
-  allDots[index].classList.add("dot_selected");
 
   console.log("arrow right !");
 });
